@@ -1,0 +1,7 @@
+﻿  TicTacToe2D.c
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(402): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(395): warning C4101: 'term': unreferenced local variable
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(206): warning C4715: 'negamax': not all control paths return a value
+  Week9Tictac.vcxproj -> \\Mac\Home\Documents\Uni Stuff\ICT1002-Programming Fundamentals\Week 9\TicTacToe-Week9-Start\Week9Tictac\Debug\Week9Tictac.exe
+  Week9Tictac.vcxproj -> \\Mac\Home\Documents\Uni Stuff\ICT1002-Programming Fundamentals\Week 9\TicTacToe-Week9-Start\Week9Tictac\Debug\Week9Tictac.pdb (Partial PDB)
