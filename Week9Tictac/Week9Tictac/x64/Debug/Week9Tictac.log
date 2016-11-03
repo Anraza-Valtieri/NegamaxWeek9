@@ -1,0 +1,12 @@
+﻿  TicTacToe2D.c
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(269): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(262): warning C4101: 'term': unreferenced local variable
+  GUI.c
+  Generating Code...
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\tictactoe2d.c(198): warning C4715: 'negamax': not all control paths return a value
+  winbgi2.cpp
+\\mac\home\documents\uni stuff\ict1002-programming fundamentals\week 9\tictactoe-week9-start\winbgi2.cpp(551): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+  Week9Tictac.vcxproj -> \\Mac\Home\Documents\Uni Stuff\ICT1002-Programming Fundamentals\Week 9\TicTacToe-Week9-Start\Week9Tictac\x64\Debug\Week9Tictac.exe
+  Week9Tictac.vcxproj -> \\Mac\Home\Documents\Uni Stuff\ICT1002-Programming Fundamentals\Week 9\TicTacToe-Week9-Start\Week9Tictac\x64\Debug\Week9Tictac.pdb (Partial PDB)

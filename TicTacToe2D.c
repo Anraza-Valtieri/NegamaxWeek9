@@ -51,9 +51,8 @@ gridValue assignValueToCell(int x, int y)
 	return board[x][y];
 }
 
-int isWinning(int p)
-{
-	// p==1 then X   p==0  then  O
+int isWinning(int p){
+	/*Insert your own code (3)*/
 	int i, j;
 	int win_value;
 
@@ -62,7 +61,6 @@ int isWinning(int p)
 	else
 		win_value = O_VALUE * O_VALUE * O_VALUE; // 12
 	printf("isWinning called %d \n", win_value);
-	/*Insert your own code (3)*/
 	i = 0;
 	j = 0;
 	while (i <= BOARD_SIZE) {//row check
@@ -96,13 +94,7 @@ int isWinning(int p)
 
 	return FALSE;
 }
-/*********************************************************************
-** Function: check_win
-** Description: Checks for three in a row in all directions.
-** Parameters:
-** Pre-Conditions: None.
-** Post-Conditions: Returns the character that that the three in a row consists of.
-*********************************************************************/
+
 char check_win() {
 	// Check horizontal, vertical & diagonal through [0][0]
 	if (board[0][0] != EMPTY && (board[0][0] == board[0][1] && board[0][0] == board[0][2] ||
@@ -204,142 +196,17 @@ else if (best_move_score > 0)
 return best_move_score - 1; //As the game goes longer, and the recursion goes deeper, the moves near the end are less favorable than in the beginning.
 
 }
-int isNearWinning(int p, int attempt)
-{
-	// p==1 then X   p==0  then  O
-	int i, j = 0;
-	int win_value;
 
-	if (p == 1)
-		win_value = X_VALUE * X_VALUE * EMPTY; 
-	else
-		win_value = O_VALUE * O_VALUE * EMPTY;
-
-	/*if (p == 1 && attempt == 2)
-		win_value = X_VALUE * EMPTY * EMPTY;
-	else
-		win_value = O_VALUE * EMPTY * EMPTY;*/
-
-	printf("isNearWinning called %d \n", win_value);
-	/*Insert your own code (3)*/
-
-	if (board[0][0] * board[1][1] * board[2][2] > win_value) {
-		printf("isNearWinning diag check %d %d\n", 0, 0);
-		for (i = 0; i < BOARD_SIZE; i++) {
-			if (board[i][1] == EMPTY)
-				return ((i*BOARD_SIZE) + 1);
-		}		
-	}
-
-	if (board[0][2] * board[1][1] * board[2][0] > win_value) {
-		printf("isNearWinning row check %d %d\n", 0, 2);
-		for (i = 2; i > 0; i--) {
-			if (board[i][1] == EMPTY)
-				return ((i*BOARD_SIZE) + 1);
-		}
-	}
-	//row check
-	for (i = 0; i < 3; i++) {
-		if (board[i][j] * board[i][j + 1] * board[i][j + 2] == win_value) {
-			printf("isNearWinning row check %d %d\n", i, j);
-			if (board[i][j] != EMPTY) {
-				if (board[i][j + 1] == board[i][j]) {
-					if (board[i][j + 2] == board[i][j]) {
-						return 1;
-					}return ((i*BOARD_SIZE) + j + 2);
-				}return ((i*BOARD_SIZE) + j + 1);
-			}return ((i*BOARD_SIZE) + j);
-		}
-	}
-	//column check
-	i = 0;
-	j = 0;
-	for (j = 0; j < 3; j++) {
-		if (board[i][j] * board[i + 1][j] * board[i + 2][j] == win_value) {
-			printf("isNearWinning column check %d %d\n", i, j);
-			if (board[i][j] != EMPTY) {
-				if (board[i+1][j] == board[i][j]) {
-					if (board[i+2][j] == board[i][j]) {
-						return 1;
-					}return (((i+2)*BOARD_SIZE)+j);
-				}return (((i+1)*BOARD_SIZE)+j);
-			}return ((i*BOARD_SIZE)+j);
-		}
-	}
-	return -1;
-	return FALSE;
-}
 int getPossibleWinningPos() {
 	return pick_best_move(comp, player);
+	/*int i,j;
+	for (i = 1; i < BOARD_SIZE; i++) {
+		for (j = 1; j < BOARD_SIZE; j++) {
+		if (board[i][j] == 0)
+			return ((i*BOARD_SIZE)+j);
+	}
+	return -1;*/
 }
-/*
-int getPossibleWinningPos2() {
-	printf("getPossibleWinningPos Called\n");
-
-	int i, j, t;
-
-	if (turn > 2) {
-		printf("getPossibleWinningPos EXIT turn > 2 Exit\n");
-		t = isNearWinning(comp, 1);
-		if (t == -1) {
-			t = isNearWinning(player, 1);
-			if (t > -1) {
-				printf("getPossibleWinningPos EXIT turn > 2 result in favor of AI Exit\n");
-				return t;
-			}
-			else
-			{
-				t = isNearWinning(player, 1);
-				if (t > -1) {
-					printf("getPossibleWinningPos EXIT turn > 2 result in favor of Player Exit\n");
-					return t;
-				}
-				else {
-					for (i = 0; i < 3; i++) {
-						for (j = 0; j < 3; j++) {
-							if (board[i][j] == EMPTY) {
-								printf("getPossibleWinningPos EXIT turn > 2 but no result Exit\n");
-								t = isNearWinning(comp, 1);
-								if (t > -1) {
-									printf("getPossibleWinningPos EXIT turn > 2 result in favor of AI LEVEL 2 Exit\n");
-									return t;
-								}
-								else
-								{
-									t = isNearWinning(player, 1);
-									if (t > -1) {
-										printf("getPossibleWinningPos EXIT turn > 2 result in favor of Player Level 2 Exit\n");
-										return t;
-									}
-								}
-								return (i * BOARD_SIZE) + j;
-							}
-						}
-					}
-				}
-			}
-		}
-		printf("getPossibleWinningPos EXIT turn > 2 result in favor of Player Level 0.5 Exit\n");
-		return t;
-	}
-	else { // First move, does not really matter.
-		if (board[1][1] == EMPTY) // Favor the center
-			return (1 * BOARD_SIZE) + 1;
-		else {
-			for (i = 0; i < 3; i++) {
-				for (j = 0; j < 3; j++) {
-					if (board[i][j] == EMPTY) {
-						if (rand(0, 20) > 1) {
-							printf("getPossibleWinningPos EXIT turn < 2 Exit\n");
-							return (i * BOARD_SIZE) + j;
-						}
-						return (1 * BOARD_SIZE) + 1;
-					}
-				}
-			}
-		}
-	}
-}*/
 
 int getPlayertype(int p) {
 	if (p == 1)
